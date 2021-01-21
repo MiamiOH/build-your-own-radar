@@ -69,7 +69,7 @@ module.exports = {
   output: {
     path: buildPath,
     publicPath: '/',
-    filename: '[name].[hash].js'
+    filename: '[name].js'
   },
 
   module: {

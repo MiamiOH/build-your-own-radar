@@ -151,7 +151,35 @@ const GoogleSheet = function (sheetReference, sheetName) {
 
   return self
 }
-
+const BuildFromJSONURL = function (url) {
+  var self = {}
+  self.init = function () {
+    plotLoading()
+    return self
+  }
+  self.build = function () {
+    d3.json(url).then(BuildFromJSON)
+  }
+}
+const BuildFromJSON = function (data) {
+  var self = {}
+  self.init = function () {
+    plotLoading()
+    return self
+  }
+  self.build = function () {
+    createBlips(data)
+  }
+  var createBlips = function (data) {
+    try {
+      const blips = _.map(data)
+      plotRadar('Local JSON', blips, 'Local JSON Data', [])
+    } catch (exception) {
+      plotErrorMessage(exception)
+    }
+  }
+  return self
+}
 const CSVDocument = function (url) {
   var self = {}
 
@@ -206,7 +234,13 @@ const GoogleSheetInput = function () {
     var queryString = window.location.href.match(/sheetId(.*)/)
     var queryParams = queryString ? QueryParams(queryString[0]) : {}
 
-    if (domainName && queryParams.sheetId.endsWith('csv')) {
+    if (window.LOCAL_DATA) {
+      sheet = BuildFromJSON(window.LOCAL_DATA)
+      sheet.init().build()
+    } else if (window.LOCAL_DATA_URL) {
+      sheet = BuildFromJSONURL(window.LOCAL_DATA_URL)
+      sheet.init().build()
+    } else if (domainName && queryParams.sheetId.endsWith('csv')) {
       sheet = CSVDocument(queryParams.sheetId)
       sheet.init().build()
     } else if (domainName && domainName.endsWith('google.com') && queryParams.sheetId) {
@@ -302,7 +336,7 @@ function plotForm (content) {
     .attr('class', 'button')
     .text('Build my radar')
 
-  form.append('p').html("<a href='https://www.thoughtworks.com/radar/how-to-byor'>Need help?</a>")
+  form.append('p').html('<a href=\'https://www.thoughtworks.com/radar/how-to-byor\'>Need help?</a>')
 }
 
 function plotErrorMessage (exception) {
@@ -321,7 +355,7 @@ function plotErrorMessage (exception) {
   plotBanner(content, bannerText)
 
   d3.selectAll('.loading').remove()
-  message = "Oops! We can't find the Google Sheet you've entered"
+  message = 'Oops! We can\'t find the Google Sheet you\'ve entered'
   var faqMessage = 'Please check <a href="https://www.thoughtworks.com/radar/how-to-byor">FAQs</a> for possible solutions.'
   if (exception instanceof MalformedDataError) {
     message = message.concat(exception.message)

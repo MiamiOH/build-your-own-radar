@@ -1,20 +1,20 @@
 {
   "name": "build-your-own-radar",
   "version": "0.3.0",
-  "description": "",
+  "description": "[![Build Status](https://travis-ci.org/thoughtworks/build-your-own-radar.svg?branch=master)](https://travis-ci.org/thoughtworks/build-your-own-radar) [![Stars](https://badgen.net/github/stars/thoughtworks/build-your-own-radar)](https://github.com/thoughtworks/build-your-own-radar) [![dependencies Status](https://david-dm.org/thoughtworks/build-your-own-radar/status.svg)](https://david-dm.org/thoughtworks/build-your-own-radar) [![devDependencies Status](https://david-dm.org/thoughtworks/build-your-own-radar/dev-status.svg)](https://david-dm.org/thoughtworks/build-your-own-radar?type=dev) [![peerDependencies Status](https://david-dm.org/thoughtworks/build-your-own-radar/peer-status.svg)](https://david-dm.org/thoughtworks/build-your-own-radar?type=peer) [![Docker Hub Pulls](https://img.shields.io/docker/pulls/wwwthoughtworks/build-your-own-radar.svg)](https://hub.docker.com/r/wwwthoughtworks/build-your-own-radar) [![GitHub contributors](https://badgen.net/github/contributors/thoughtworks/build-your-own-radar?color=cyan)](https://github.com/thoughtworks/build-your-own-radar/graphs/contributors) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![AGPL License](https://badgen.net/github/license/thoughtworks/build-your-own-radar)](https://github.com/thoughtworks/build-your-own-radar)",
   "main": "index.js",
   "scripts": {
     "test": "standard --fix && istanbul cover jasmine",
     "test:lint": "npx standard",
     "dev": "webpack-dev-server --mode development --inline",
     "build": "webpack --mode production",
-    "end_to_end_test": "node_modules/.bin/cypress run --env host=$TEST_URL",
-    "start": "node_modules/.bin/cypress open --env host=$TEST_URL"
+    "end_to_end_test": "cypress run --env host=$TEST_URL",
+    "start": "cypress open --env host=$TEST_URL"
   },
   "author": "ThoughtWorks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thoughtworks/build-your-own-radar"
+    "url": "git+https://github.com/thoughtworks/build-your-own-radar.git"
   },
   "keywords": [
     "tech-radar"
@@ -26,7 +26,7 @@
     "babel-preset-env": "^1.7.0",
     "css-loader": "^3.2.1",
     "cssnano": "^4.1.7",
-    "cypress": "^3.7.0",
+    "cypress": "^3.8.3",
     "dotenv": "^8.2.0",
     "expose-loader": "^0.7.5",
     "file-loader": "^5.0.2",
@@ -38,7 +38,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^5.2.0",
     "mochawesome": "^4.1.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
     "sass-loader": "^8.0.0",
@@ -47,17 +47,17 @@
     "tar": ">=5.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0",
+    "webpack-dev-server": "^3.11.2",
     "xmlhttprequest": "^1.8.0",
-    "yargs": "^15.0.2"
+    "yargs": "^15.4.1"
   },
   "dependencies": {
     "chance": "^1.0.18",
     "d3": "^5.14.2",
     "d3-tip": "^0.7.1",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "jquery-ui": "^1.12.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "sanitize-html": "^1.20.0",
     "tabletop": "^1.6.2"
   },
@@ -78,5 +78,9 @@
       "radar-spec.js",
       "ref-table-spec.js"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/thoughtworks/build-your-own-radar/issues"
+  },
+  "homepage": "https://github.com/thoughtworks/build-your-own-radar#readme"
 }
