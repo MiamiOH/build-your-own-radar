@@ -28,7 +28,7 @@ if (isDev) {
 }
 
 const plugins = [
-  new MiniCssExtractPlugin({ filename: '[name].[hash].css' }),
+  new MiniCssExtractPlugin({ filename: '[name].css' }),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     chunks: ['main'],
