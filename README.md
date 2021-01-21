@@ -55,6 +55,52 @@ JSF,hold,languages & frameworks,FALSE,"We continue to see teams run into trouble
 
 ***Note:*** The CSV file parsing is using D3 library, so consult the D3 documentation for the data format details.
 
+### Using JSON Data
+With inspiration from [atlassian/techradar](https://github.com/atlassian/techradar), we now have the capabilities to read from a JSON file in addition to a CSV and a google sheet.
+
+#### JSON via url specified in a global variable
+If you have set the variable window.LOCAL_DATA_URL radar will use that to render data at launch
+
+#### JSON via data specified in a global variable
+If you have set the variable window.LOCAL_DATA radar will use that object to render data at launch
+
+### Setting up your data as JSON
+The structure of the object should be as mentioned in `index.html`
+The Json returned should be following the below schema
+```javascript
+      {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "ring": {
+              "type": "string"
+            },
+            "quadrant": {
+              "type": "string"
+            },
+            "isnew": {
+              "type": "boolean"
+            },
+            "description": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "ring",
+            "quadrant",
+            "isnew",
+            "description"
+          ]
+        }
+      } 
+```
+
 ### Building the radar
 
 Paste the URL in the input field on the home page.
