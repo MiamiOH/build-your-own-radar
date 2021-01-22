@@ -173,7 +173,7 @@ const BuildFromJSON = function (data) {
   var createBlips = function (data) {
     try {
       const blips = _.map(data)
-      plotRadar('Local JSON', blips, 'Local JSON Data', [])
+      plotRadar(window.radar_title ? window.radar_title : 'Local JSON', blips, window.radar_name ? window.radar_name : 'Local JSON Data', [])
     } catch (exception) {
       plotErrorMessage(exception)
     }
